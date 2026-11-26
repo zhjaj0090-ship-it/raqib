@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#082f27">
+  <meta name="description" content="رقيب — رفيقك اليومي للصلاة والقرآن والأذكار.">
+  <title>رقيب | الله يراك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" data-nav="home" aria-label="رقيب - الرئيسية">
+        <span class="brand-mark" aria-hidden="true">ر</span>
+        <span><strong>رقيب</strong><small>الله يراك</small></span>
+      </a>
+      <div class="top-actions">
+        <button class="icon-btn" id="notificationBtn" aria-label="تفعيل التنبيهات" title="التنبيهات">♧</button>
+        <button class="avatar" id="settingsShortcut" aria-label="الإعدادات">⚙</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view active" id="view-home" aria-labelledby="welcomeTitle">
+        <div class="hero">
+          <div class="hero-pattern" aria-hidden="true"></div>
+          <p class="eyebrow" id="todayDate">يوم جديد مع الله</p>
+          <h1 id="welcomeTitle">السلام عليك 🌿</h1>
+          <p class="hero-subtitle">اجعل يومك عامرًا بالصلاة والذكر والقرآن.</p>
+          <div class="hero-bottom">
+            <div><span class="muted-light">الصلاة القادمة</span><strong id="nextPrayerName">جارٍ تحديدها...</strong></div>
+            <div class="next-time" id="nextPrayerTime">--:--</div>
+          </div>
+          <div class="countdown" id="nextPrayerCountdown">يتم حساب الوقت المتبقي</div>
+        </div>
+
+        <div class="section-heading">
+          <div><span class="eyebrow">مواقيت اليوم</span><h2>صلاتك في وقتها</h2></div>
+          <button class="text-button" data-nav="settings">تغيير المدينة</button>
+        </div>
+        <div class="prayer-grid" id="prayerGrid">
+          <div class="loading-card">جارٍ تحميل مواقيت الصلاة...</div>
+        </div>
+        <p class="location-note" id="locationNote">يتم تحديد المواقيت حسب موقعك أو المدينة المختارة.</p>
+
+        <div class="section-heading compact">
+          <div><span class="eyebrow">خطوات صغيرة وأجر عظيم</span><h2>مساحتك اليومية</h2></div>
+        </div>
+        <div class="feature-grid">
+          <button class="feature-card quran-card" data-nav="quran"><span class="feature-icon">۞</span><strong>القرآن الكريم</strong><small>أكمل من حيث وصلت</small><span class="feature-arrow">←</span></button>
+          <button class="feature-card adhkar-card" data-nav="adhkar"><span class="feature-icon">◉</span><strong>الأذكار</strong><small>طمأنينة لقلبك</small><span class="feature-arrow">←</span></button>
+        </div>
+
+        <div class="daily-reminder">
+          <span class="reminder-star">✦</span>
+          <div><span class="eyebrow">رسالة رقيب</span><p id="dailyMessage">لا تؤجل طاعة تستطيع فعلها الآن.</p></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-quran" aria-labelledby="quranTitle">
+        <div class="page-heading"><span class="eyebrow">كلام الله</span><h1 id="quranTitle">القرآن الكريم</h1><p>اقرأ بتدبر، واحفظ موضعك لتعود إليه.</p></div>
+        <div class="continue-card" id="continueReading">
+          <div class="continue-symbol">۞</div>
+          <div><span class="eyebrow">آخر قراءة</span><strong id="lastReadLabel">لم تبدأ القراءة بعد</strong><small id="lastReadDetail">اختر سورة لتبدأ رحلتك</small></div>
+          <button class="round-arrow" id="continueBtn" aria-label="متابعة القراءة">←</button>
+        </div>
+        <label class="search-box"><span>⌕</span><input id="surahSearch" type="search" placeholder="ابحث عن سورة..." autocomplete="off"></label>
+        <div class="list-heading"><h2>السور</h2><span id="surahCount">114 سورة</span></div>
+        <div class="surah-list" id="surahList"><div class="loading-card">جارٍ تحميل فهرس القرآن...</div></div>
+      </section>
+
+      <section class="view" id="view-reader" aria-labelledby="readerTitle">
+        <div class="reader-toolbar">
+          <button class="back-button" data-nav="quran">→ <span>السور</span></button>
+          <button class="text-button" id="bookmarkCurrent">＋ حفظ علامة</button>
+        </div>
+        <div class="surah-title-panel">
+          <span class="ornament">۞</span>
+          <h1 id="readerTitle">سورة الفاتحة</h1>
+          <p id="readerMeta">مكية • 7 آيات</p>
+          <span class="ornament">۞</span>
+        </div>
+        <div class="basmala" id="basmala">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        <div class="ayah-container" id="ayahContainer"><div class="loading-card">جارٍ تحميل الآيات...</div></div>
+        <div class="reader-footer"><button class="secondary-button" id="previousSurah">السورة السابقة</button><button class="primary-button" id="nextSurah">السورة التالية</button></div>
+      </section>
+
+      <section class="view" id="view-adhkar" aria-labelledby="adhkarTitle">
+        <div class="page-heading"><span class="eyebrow">ألا بذكر الله تطمئن القلوب</span><h1 id="adhkarTitle">الأذكار</h1><p>اختر وقت الذكر، وابدأ بهدوء.</p></div>
+        <div class="adhkar-tabs" id="adhkarTabs">
+          <button class="adhkar-tab active" data-category="morning">أذكار الصباح</button>
+          <button class="adhkar-tab" data-category="evening">أذكار المساء</button>
+          <button class="adhkar-tab" data-category="sleep">أذكار النوم</button>
+          <button class="adhkar-tab" data-category="afterPrayer">بعد الصلاة</button>
+        </div>
+        <div class="progress-wrap"><div class="progress-label"><span id="adhkarProgressLabel">تقدمك اليوم</span><strong id="adhkarProgress">0 / 0</strong></div><div class="progress-track"><span id="adhkarProgressBar"></span></div></div>
+        <div id="adhkarList" class="adhkar-list"></div>
+        <button class="reset-button" id="resetAdhkar">إعادة عدّ الأذكار</button>
+      </section>
+
+      <section class="view" id="view-settings" aria-labelledby="settingsTitle">
+        <div class="page-heading"><span class="eyebrow">تحكم في تجربتك</span><h1 id="settingsTitle">الإعدادات</h1><p>اضبط المواقيت والتنبيهات كما يناسبك.</p></div>
+        <div class="settings-card">
+          <h2>موقع مواقيت الصلاة</h2>
+          <p>يمكن استخدام موقع الجهاز أو إدخال اسم المدينة يدويًا.</p>
+          <button class="primary-button full" id="useLocation">استخدام موقعي الحالي</button>
+          <div class="or-divider"><span>أو ابحث عن مدينة</span></div>
+          <div class="city-row"><input id="cityInput" type="text" placeholder="مثال: القاهرة" autocomplete="off"><button class="secondary-button" id="searchCity">بحث</button></div>
+          <p class="setting-hint" id="cityStatus">المواقيت تُجلب من خدمة حساب مواقيت الصلاة.</p>
+        </div>
+        <div class="settings-card">
+          <h2>التنبيهات</h2>
+          <p>اسمح للتطبيق بإرسال تنبيه عند حلول وقت الصلاة أثناء تشغيل الصفحة.</p>
+          <div class="setting-row"><div><strong>تنبيهات الصلاة</strong><small id="notificationStatus">غير مفعّلة</small></div><button class="toggle" id="notificationToggle" aria-label="تبديل تنبيهات الصلاة"><span></span></button></div>
+          <div class="setting-row"><div><strong>اهتزاز عند الذكر</strong><small>اهتزاز بسيط عند إكمال العداد</small></div><button class="toggle on" id="vibrationToggle" aria-label="تبديل الاهتزاز"><span></span></button></div>
+        </div>
+        <div class="settings-card">
+          <h2>عن رقيب</h2>
+          <p>رقيب رفيق يساعدك على متابعة الصلاة والقرآن والأذكار. اجعل التقنية وسيلة للخير.</p>
+          <div class="version-row"><span>الإصدار</span><strong>1.0.0</strong></div>
+        </div>
+        <button class="danger-text" id="clearData">مسح بيانات هذا الجهاز</button>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="التنقل الرئيسي">
+      <button class="nav-item active" data-nav="home"><span>⌂</span><small>الرئيسية</small></button>
+      <button class="nav-item" data-nav="quran"><span>۞</span><small>القرآن</small></button>
+      <button class="nav-item" data-nav="adhkar"><span>◉</span><small>الأذكار</small></button>
+      <button class="nav-item" data-nav="settings"><span>⚙</span><small>الإعدادات</small></button>
+    </nav>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
