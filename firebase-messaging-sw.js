@@ -2,7 +2,7 @@ importScripts("https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js
 importScripts("https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging-compat.js");
 
 firebase.initializeApp({
-  apiKey: "AIzaSyCxdosAo13AlLiDiAW6FSe8N_aIqoqnSJ_4",
+  apiKey: "AIzaSyCxdosAoi3AliDiAW6fSe8N_alqoQnSJ_4",
   authDomain: "raqeb-95ca6.firebaseapp.com",
   projectId: "raqeb-95ca6",
   storageBucket: "raqeb-95ca6.firebasestorage.app",
