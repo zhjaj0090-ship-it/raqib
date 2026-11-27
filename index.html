@@ -160,5 +160,31 @@
       notifToggle.addEventListener("click", handleActivate);
     }
   </script>
+    <script type="module">
+    import { activateNotifications } from "./notifications.js";
+
+    const notifBtn = document.getElementById("notificationBtn");
+    const notifToggle = document.getElementById("notificationToggle");
+    const notifStatus = document.getElementById("notificationStatus");
+
+    async function handleActivate() {
+      const token = await activateNotifications();
+      if (token) {
+        if (notifStatus) notifStatus.textContent = "مفعّلة";
+        if (notifToggle) notifToggle.classList.add("on");
+      }
+    }
+
+    if (notifBtn) {
+      notifBtn.addEventListener("click", handleActivate);
+    }
+
+    if (notifToggle) {
+      notifToggle.addEventListener("click", handleActivate);
+    }
+  </script>
+</body>
+</html>
+
 </body>
 </html>
