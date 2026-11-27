@@ -11,7 +11,7 @@ const firebaseConfig = {
   measurementId: "G-N7BVTLYDBD"
 };
 
-const VAPID_KEY = "BABwtzVMqmY8iM_G20t_prpcsqrA9FmMoSwKmvRLAxBxIyU10ptVkGtk7Zy8i0Etg8nib2LmJLpSBLW-rk3Ba0k";
+const VAPID_KEY = "BAkWIOk9MOEtC3oFwMulFFls2laYjmDzeBjmxm5Sy2JroTZXzI7MCuhwVI3xGiWIhG2I-vHYcFcYxRHFjDhCsyY";
 
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
