@@ -67,6 +67,19 @@ function showTokenBox(token) {
   });
 }
 
+async function ensureServiceWorker() {
+  if (!("serviceWorker" in navigator)) {
+    throw new Error("المتصفح لا يدعم Service Worker");
+  }
+
+  const registration = await navigator.serviceWorker.register("/firebase-messaging-sw.js", {
+    scope: "/"
+  });
+
+  await navigator.serviceWorker.ready;
+  return registration;
+}
+
 export async function activateNotifications() {
   try {
     if (!("Notification" in window)) {
@@ -80,7 +93,13 @@ export async function activateNotifications() {
       return null;
     }
 
-    const token = await getToken(messaging, { vapidKey: VAPID_KEY });
+    const registration = await ensureServiceWorker();
+
+    const token = await getToken(messaging, {
+      vapidKey: VAPID_KEY,
+      serviceWorkerRegistration: registration
+    });
+
     if (token) {
       showTokenBox(token);
     } else {
@@ -98,4 +117,3 @@ onMessage(messaging, (payload) => {
     body: payload.notification?.body || ""
   });
 });
-    
